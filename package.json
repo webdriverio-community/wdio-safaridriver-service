@@ -1,0 +1,47 @@
+{
+  "name": "wdio-safaridriver-service",
+  "version": "0.0.1",
+  "description": "WebdriverIO service to start & stop safaridriver",
+  "main": "./build",
+  "scripts": {
+    "build": "NODE_ENV=production run-s clean compile",
+    "clean": "rimraf ./build",
+    "compile": "babel src/ -d build/ --config-file ./babel.config.js",
+    "test": "run-s test:*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aruiz-caritsqa/wdio-safaridriver-service.git"
+  },
+  "keywords": [
+    "wdio",
+    "safaridriver",
+    "webdriver"
+  ],
+  "author": "Adrien Ruiz Gauder <caritsqa@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aruiz-caritsqa/wdio-safaridriver-service/issues"
+  },
+  "homepage": "https://github.com/aruiz-caritsqa/wdio-safaridriver-service#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-proposal-export-default-from": "^7.5.2",
+    "@babel/plugin-proposal-function-bind": "^7.2.0",
+    "@babel/plugin-proposal-optional-catch-binding": "^7.2.0",
+    "@babel/preset-env": "^7.5.5",
+    "rimraf": "^2.6.3"
+  },
+  "dependencies": {
+    "fs-extra": "^8.1.0",
+    "npm-run-all": "^4.1.5"
+  },
+  "contributors": [
+    "Adrien Ruiz Gauder <caritsqa@gmail.com>",
+    "Rafal Skorka",
+    "Mattias Ekstrand <mattias.ekstrand@gmail.com>",
+    "Christian Bromann <christian@saucelabs.com>"
+  ]
+}
