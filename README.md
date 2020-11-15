@@ -77,21 +77,21 @@ export.config = {
   services: ['safaridriver'],
 
   // options
-  safaridriverArgs: ['-p 4444'], // use the specified port. Default is 4444
-  safaridriverLogs: './',
+  safariDriverArgs: ['-p 4444'], // use the specified port. Default is 4444
+  safariDriverLogs: './',
   // ...
 };
 ```
 
 ## Options
 
-### safaridriverArgs
+### safariDriverArgs
 Array of arguments to pass to the safaridriver executable.
 * `-p` will use wdioConfig.port if not specified
 * etc.
 
 Type: `string[]`
-### safaridriverLogs
+### safariDriverLogs
 Path where all logs from the safaridriver server should be stored.
 
 Type: `string`
