@@ -1,17 +1,26 @@
 {
   "name": "wdio-safaridriver-service",
   "version": "0.0.2",
-  "description": "WebdriverIO service to start & stop safaridriver",
-  "main": "./build",
+  "description": "WebdriverIO service to start & stop Safaridriver",
+  "main": "./dist",
   "scripts": {
-    "build": "NODE_ENV=production run-s clean compile",
-    "clean": "rimraf ./build",
-    "compile": "babel src/ -d build/ --config-file ./babel.config.js",
-    "test": "run-s test:*"
+    "build": "tsc -b .",
+    "ci": "run-s lint build test",
+    "clean": "rimraf ./node_modules yarn-lock.yaml ./dist",
+    "prepare": "husky install",
+    "release": "release-it --github.release",
+    "release:ci": "npm run release -- --ci --npm.skipChecks --no-git.requireCleanWorkingDir",
+    "release:patch": "npm run release -- patch",
+    "release:minor": "npm run release -- minor",
+    "release:major": "npm run release -- major",
+    "test": "run-s test:*",
+    "test:lint": "eslint src test",
+    "test:e2e": "wdio run ./test/wdio.conf.ts",
+    "watch": "yarn run build --watch"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/aruiz-caritsqa/wdio-safaridriver-service.git"
+    "url": "git+https://github.com/webdriverio-community/wdio-safaridriver-service.git"
   },
   "keywords": [
     "wdio",
@@ -21,27 +30,41 @@
   "author": "Adrien Ruiz Gauder <caritsqa@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/aruiz-caritsqa/wdio-safaridriver-service/issues"
+    "url": "https://github.com/webdriverio-community/wdio-safaridriver-service/issues"
   },
-  "homepage": "https://github.com/aruiz-caritsqa/wdio-safaridriver-service#readme",
+  "homepage": "https://github.com/webdriverio-community/wdio-safaridriver-service#readme",
   "devDependencies": {
-    "@babel/cli": "^7.5.5",
-    "@babel/core": "^7.5.5",
-    "@babel/plugin-proposal-class-properties": "^7.5.5",
-    "@babel/plugin-proposal-export-default-from": "^7.5.2",
-    "@babel/plugin-proposal-function-bind": "^7.2.0",
-    "@babel/plugin-proposal-optional-catch-binding": "^7.2.0",
-    "@babel/preset-env": "^7.5.5",
-    "rimraf": "^2.6.3"
-  },
-  "dependencies": {
-    "fs-extra": "^8.1.0",
-    "npm-run-all": "^4.1.5"
+    "@types/node": "^17.0.21",
+    "@typescript-eslint/eslint-plugin": "^5.14.0",
+    "@typescript-eslint/parser": "^5.14.0",
+    "@wdio/cli": "^7.18.1",
+    "@wdio/local-runner": "^7.18.1",
+    "@wdio/mocha-framework": "^7.18.0",
+    "@wdio/spec-reporter": "^7.18.0",
+    "@wdio/types": "^7.17.3",
+    "eslint": "^8.10.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-airbnb-base-typescript": "^1.0.0",
+    "eslint-import-resolver-typescript": "^2.5.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jest": "^26.1.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-wdio": "^7.18.1",
+    "husky": "^7.0.4",
+    "npm-run-all": "^4.1.5",
+    "release-it": "^14.12.5",
+    "rimraf": "^3.0.2",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.2"
   },
   "contributors": [
     "Adrien Ruiz Gauder <caritsqa@gmail.com>",
     "Rafal Skorka",
     "Mattias Ekstrand <mattias.ekstrand@gmail.com>",
     "Christian Bromann <christian@saucelabs.com>"
-  ]
+  ],
+  "dependencies": {
+    "fs-extra": "^10.0.1"
+  }
 }

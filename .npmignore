@@ -1,7 +1,9 @@
 src
 tests
 coverage
-babel.config.js
+tsconfig.json
+.eslintrc.json
+.editorconfig
 SafariDriver.txt
 node_modules
 .*
