@@ -1,6 +1,6 @@
 # WDIO SafariDriver Service [![CI](https://github.com/webdriverio-community/wdio-safaridriver-service/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/webdriverio-community/wdio-safaridriver-service/actions/workflows/ci.yml)
 
-This service helps you to run the Safari browser seamlessly when running tests with the [WDIO testrunner](http://webdriver.io/guide/testrunner/gettingstarted.html). It uses the [/usr/bin/safaridriver](https://developer.apple.com/documentation/webkit/testing_with_webdriver_in_safari) that comes with Safari/OSX.
+This service helps you to run the Safari browser seamlessly when running tests with the [WDIO testrunner](http://webdriver.io/guide/testrunner/gettingstarted.html). It uses the [`/usr/bin/safaridriver`](https://developer.apple.com/documentation/webkit/testing_with_webdriver_in_safari) that comes with Safari/OSX.
 
 Note - this service does not require a Selenium server, but uses the `/usr/bin/safaridriver` to communicate with the browser directly. Obvisously, it only supports:
 
