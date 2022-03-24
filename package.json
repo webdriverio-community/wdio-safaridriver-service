@@ -66,6 +66,11 @@
     "Christian Bromann <christian@saucelabs.com>"
   ],
   "dependencies": {
-    "fs-extra": "^10.0.1"
+    "@types/split2": "^3.2.1",
+    "@types/tcp-port-used": "^1.0.1",
+    "@wdio/logger": "^7.19.0",
+    "fs-extra": "^10.0.1",
+    "split2": "^4.1.0",
+    "tcp-port-used": "^1.0.2"
   }
 }
