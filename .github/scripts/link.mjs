@@ -6,7 +6,7 @@ import url from 'url'
 
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, '..', '..')
-const LINKED_DIR = path.join(ROOT, 'node_modules', 'wdio-vscode-service')
+const LINKED_DIR = path.join(ROOT, 'node_modules', 'wdio-safaridriver-service')
 
 await fs.rm(LINKED_DIR, {
     recursive: true
