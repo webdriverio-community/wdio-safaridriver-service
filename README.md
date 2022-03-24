@@ -1,5 +1,4 @@
-WDIO SafariDriver Service
-================================
+# WDIO SafariDriver Service [![CI](https://github.com/webdriverio-community/wdio-safaridriver-service/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/webdriverio-community/wdio-safaridriver-service/actions/workflows/ci.yml)
 
 (Based entirely on [wdio-edgedriver-service](https://www.npmjs.com/package/wdio-edgedriver-service)... which itself was based entirely on [wdio-chromedriver-service](https://www.npmjs.com/package/wdio-chromedriver-service)... which was based on [selenium-standalone-service](https://www.npmjs.com/package/@wdio/selenium-standalone-service). I think thats it)
 
@@ -7,7 +6,7 @@ Note - this service is targeted at WDIO v5.
 
 ----
 
-This service helps you to run the Safari browser seamlessly when running tests with the [WDIO testrunner](http://webdriver.io/guide/testrunner/gettingstarted.html). 
+This service helps you to run the Safari browser seamlessly when running tests with the [WDIO testrunner](http://webdriver.io/guide/testrunner/gettingstarted.html).
 It uses the [/usr/bin/safaridriver](https://developer.apple.com/documentation/webkit/testing_with_webdriver_in_safari) that comes with Safari/OSX.
 
 Note - this service does not require a Selenium server, but uses the `/usr/bin/safaridriver` to communicate with the browser directly.
@@ -40,20 +39,20 @@ npm install wdio-safaridriver-service --save-dev
 Instructions on how to install `WebdriverIO` can be found [here.](http://webdriver.io/guide/getstarted/install.html)
 
 ## Configure Safari to Enable WebDriver Support
+
 Safari’s WebDriver support for developers is turned off by default. How you enable it depends on your operating system.
 
-### High Sierra and later:
+### High Sierra and later
 
 Run `safaridriver --enable` once. (If you’re upgrading from a previous macOS release, you may need to use sudo.)
 
-### Sierra and earlier:
+### Sierra and earlier
 
 1. If you haven’t already done so, make the Develop menu available. Choose Safari > Preferences, and on the Advanced tab, select “Show Develop menu in menu bar.” For details, see [Safari Help](https://support.apple.com/guide/safari/welcome).
 
 2. Choose Develop > Allow Remote Automation.
 
 3. Authorize `safaridriver` to launch the XPC service that hosts the local web server. To permit this, manually run `/usr/bin/safaridriver` once and follow the authentication prompt.
-
 
 
 ## Configuration
@@ -72,7 +71,7 @@ export.config = {
      * safaridriver can only handle 1 instance unfortunately
      * https://developer.apple.com/documentation/webkit/about_webdriver_for_safari
      */
-    maxInstances: 1, 
+    maxInstances: 1,
   }],
   services: ['safaridriver'],
 
@@ -85,18 +84,23 @@ export.config = {
 
 ## Options
 
-### safariDriverArgs
-Array of arguments to pass to the safaridriver executable.
-* `-p` will use wdioConfig.port if not specified
-* etc.
+### `args`
+
+Array of arguments to pass to the safaridriver executable. `-p` will use wdioConfig.port if not specified.
 
 Type: `string[]`
-### safariDriverLogs
-Path where all logs from the safaridriver server should be stored.
+
+### `outputDir`
+
+The path where the output of the Safaridriver server should be stored (uses the `config.outputDir` by default when not set).
 
 Type: `string`
 
+### `logFileName`
 
+The name of the log file to be written in outputDir.
+
+Type: `string`
 
 ----
 

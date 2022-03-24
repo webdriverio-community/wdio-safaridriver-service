@@ -2,7 +2,8 @@
   "name": "wdio-safaridriver-service",
   "version": "0.0.2",
   "description": "WebdriverIO service to start & stop Safaridriver",
-  "main": "./dist",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsc -b .",
     "ci": "run-s lint build test",

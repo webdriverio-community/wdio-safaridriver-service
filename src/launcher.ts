@@ -4,6 +4,7 @@ import split2 from 'split2'
 import logger from '@wdio/logger'
 import tcpPortUsed from 'tcp-port-used'
 import { SevereServiceError } from 'webdriverio'
+import type { Options } from '@wdio/types'
 
 import { getFilePath } from './utils'
 import type { ServiceOptions } from './types'
@@ -16,12 +17,19 @@ const log = logger('wdio-safaridriver-service')
 
 export default class SafariDriverLauncher {
     private _process?: ChildProcess
+    private _outputDir?: string
 
-    constructor (private _options: ServiceOptions) {}
+    constructor (
+        private _options: ServiceOptions,
+        _: never,
+        private _config: Options.Testrunner
+    ) {
+        this._outputDir = this._options.outputDir || this._config.outputDir
+    }
 
     public async onPrepare () {
         const args = this._options.args || []
-        const port = this._options.port || DEFAULT_PORT
+        const port = this._config.port || DEFAULT_PORT
 
         if (!args.find((arg) => arg.startsWith('-p'))) {
             args.push(`-p ${port}`)
@@ -30,7 +38,7 @@ export default class SafariDriverLauncher {
         log.info(`Start Safaridriver with args ${args.join(' ')}`)
         this._process = spawn('safaridriver', args)
 
-        if (typeof this._options.outputDir === 'string') {
+        if (typeof this._outputDir === 'string') {
             await this._redirectLogStream()
         } else {
             this._process.stdout?.pipe(split2()).on('data', log.info.bind(this))
@@ -55,7 +63,7 @@ export default class SafariDriverLauncher {
     }
 
     private async _redirectLogStream () {
-        const logFile = getFilePath(this._options.outputDir!)
+        const logFile = getFilePath(this._outputDir!, this._options.logFileName)
         await fs.ensureFile(logFile)
 
         const logStream = fs.createWriteStream(logFile, { flags: 'w' })
