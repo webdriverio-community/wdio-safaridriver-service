@@ -1,21 +1,13 @@
 # WDIO SafariDriver Service [![CI](https://github.com/webdriverio-community/wdio-safaridriver-service/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/webdriverio-community/wdio-safaridriver-service/actions/workflows/ci.yml)
 
-(Based entirely on [wdio-edgedriver-service](https://www.npmjs.com/package/wdio-edgedriver-service)... which itself was based entirely on [wdio-chromedriver-service](https://www.npmjs.com/package/wdio-chromedriver-service)... which was based on [selenium-standalone-service](https://www.npmjs.com/package/@wdio/selenium-standalone-service). I think thats it)
+This service helps you to run the Safari browser seamlessly when running tests with the [WDIO testrunner](http://webdriver.io/guide/testrunner/gettingstarted.html). It uses the [/usr/bin/safaridriver](https://developer.apple.com/documentation/webkit/testing_with_webdriver_in_safari) that comes with Safari/OSX.
 
-Note - this service is targeted at WDIO v5.
-
-----
-
-This service helps you to run the Safari browser seamlessly when running tests with the [WDIO testrunner](http://webdriver.io/guide/testrunner/gettingstarted.html).
-It uses the [/usr/bin/safaridriver](https://developer.apple.com/documentation/webkit/testing_with_webdriver_in_safari) that comes with Safari/OSX.
-
-Note - this service does not require a Selenium server, but uses the `/usr/bin/safaridriver` to communicate with the browser directly.
-Obvisously, it only supports:
+Note - this service does not require a Selenium server, but uses the `/usr/bin/safaridriver` to communicate with the browser directly. Obvisously, it only supports:
 
 ```js
 capabilities: [{
-        browserName: 'safari'
-    }]
+    browserName: 'safari'
+}]
 ```
 
 ## Installation
@@ -25,7 +17,7 @@ The easiest way is to keep `wdio-safaridriver-service` as a devDependency in you
 ```json
 {
   "devDependencies": {
-    "wdio-safaridriver-service": "^0.0.1"
+    "wdio-safaridriver-service": "^1.0.0"
   }
 }
 ```
@@ -54,7 +46,6 @@ Run `safaridriver --enable` once. (If you’re upgrading from a previous macOS r
 
 3. Authorize `safaridriver` to launch the XPC service that hosts the local web server. To permit this, manually run `/usr/bin/safaridriver` once and follow the authentication prompt.
 
-
 ## Configuration
 
 By design, only Safari is available, and will only work on Mac OS. In order to use the service you need to add `safaridriver` to your service array:
@@ -62,23 +53,24 @@ By design, only Safari is available, and will only work on Mac OS. In order to u
 ```js
 // wdio.conf.js
 export.config = {
-  // port to find safaridriver
-  port: 4447, // if you want to specify the port. Default is 4444
-  path: '/',
-  // ...
-  capabilities: [{
+    // port to find safaridriver
+    port: 4447, // if you want to specify the port. Default is 4444
+    path: '/',
+    // ...
+    capabilities: [{
     /*
      * safaridriver can only handle 1 instance unfortunately
      * https://developer.apple.com/documentation/webkit/about_webdriver_for_safari
      */
     maxInstances: 1,
-  }],
-  services: ['safaridriver'],
-
-  // options
-  safariDriverArgs: ['-p 4444'], // use the specified port. Default is 4444
-  safariDriverLogs: './',
-  // ...
+    }],
+    services: [
+        ['safaridriver', {
+            outputDir: './logs',
+            logFileName: 'wdio-safaridriver.log'
+        }]
+    ],
+    // ...
 };
 ```
 
