@@ -29,7 +29,7 @@ export default class SafariDriverLauncher {
 
     public async onPrepare () {
         const args = this._options.args || []
-        const port = this._config.port || DEFAULT_PORT
+        const port = this._options.port || this._config.port || DEFAULT_PORT
 
         if (!args.find((arg) => arg.startsWith('-p'))) {
             args.push(`-p ${port}`)

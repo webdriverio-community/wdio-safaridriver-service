@@ -1,4 +1,4 @@
-// eslint-disable-next-line node/no-unpublished-import
+import path from 'node:path'
 import type { Options } from '@wdio/types'
 
 export const config: Options.Testrunner = {
@@ -26,7 +26,7 @@ export const config: Options.Testrunner = {
         // for all available options
         tsNodeOpts: {
             transpileOnly: true,
-            project: 'test/tsconfig.json'
+            project: path.join(__dirname, '/tsconfig.json')
         }
         // tsconfig-paths is only used if "tsConfigPathsOpts" are provided, if you
         // do please make sure "tsconfig-paths" is installed as dependency
@@ -80,7 +80,8 @@ export const config: Options.Testrunner = {
     // https://saucelabs.com/platform/platform-configurator
     //
     capabilities: [{
-        browserName: 'safari'
+        browserName: 'safari',
+        port: 4567
     }],
     //
     // ===================
@@ -129,7 +130,9 @@ export const config: Options.Testrunner = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: ['safaridriver'],
+    services: [
+        ['safaridriver', { port: 4567 }]
+    ],
     //
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber

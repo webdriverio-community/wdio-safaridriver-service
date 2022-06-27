@@ -76,6 +76,12 @@ export.config = {
 
 ## Options
 
+### `port`
+The port on which the driver should run on.
+
+Example: `4444`
+Type: `number`
+
 ### `args`
 
 Array of arguments to pass to the safaridriver executable. `-p` will use wdioConfig.port if not specified.
