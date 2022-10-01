@@ -1,25 +1,11 @@
 {
+  "extends": "../tsconfig.json",
   "compilerOptions": {
-    "target": "ES2018",
     "module": "CommonJS",
-    "rootDir": "./",
     "esModuleInterop": true,
-    "strict": true,
-    "noUnusedLocals": true,
-    "noImplicitReturns": true,
-    "noImplicitAny": true,
-    "resolveJsonModule": true,
-    "experimentalDecorators": true,
-    "allowJs": true,
-    "types": [
-      "node",
-      "webdriverio/async",
-      "@wdio/mocha-framework",
-      "expect-webdriverio"
-    ]
+    "rootDir": ".."
   },
   "include": [
     "./**/*.ts"
-  ],
-  "exclude": ["../node_modules/@types/mocha"]
+  ]
 }

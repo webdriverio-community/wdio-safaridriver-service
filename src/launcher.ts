@@ -6,7 +6,7 @@ import tcpPortUsed from 'tcp-port-used'
 import { SevereServiceError } from 'webdriverio'
 import type { Options } from '@wdio/types'
 
-import { getFilePath } from './utils'
+import { getFilePath } from './utils.js'
 import { pkg } from './constants.js'
 import type { ServiceOptions } from './types'
 
