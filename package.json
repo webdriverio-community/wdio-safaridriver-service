@@ -2,12 +2,50 @@
   "name": "wdio-safaridriver-service",
   "version": "1.1.0",
   "description": "WebdriverIO service to start & stop Safaridriver",
-  "main": "./dist/index.js",
+  "author": "Adrien Ruiz Gauder <caritsqa@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/webdriverio-community/wdio-safaridriver-service/issues"
+  },
+  "homepage": "https://github.com/webdriverio-community/wdio-safaridriver-service#readme",
+  "contributors": [
+    "Adrien Ruiz Gauder <caritsqa@gmail.com>",
+    "Rafal Skorka",
+    "Mattias Ekstrand <mattias.ekstrand@gmail.com>",
+    "Christian Bromann <christian@saucelabs.com>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/webdriverio-community/wdio-safaridriver-service.git"
+  },
+  "keywords": [
+    "wdio",
+    "wdio-service",
+    "safaridriver",
+    "webdriverio",
+    "webdriver"
+  ],
+  "main": "./dist/cjs/index.js",
+  "type": "module",
+  "module": "./dist/index.js",
+  "exports": {
+    ".": [
+      {
+        "import": "./dist/index.js",
+        "require": "./dist/cjs/index.js"
+      },
+      "./dist/cjs/index.js"
+    ]
+  },
   "types": "./dist/index.d.ts",
+  "typeScriptVersion": "3.8.3",
+  "engines": {
+    "node": "^16.13 || >=18"
+  },
   "scripts": {
     "build": "tsc -b .",
     "ci": "run-s lint build test",
-    "clean": "rimraf ./node_modules yarn-lock.yaml ./dist",
+    "clean": "rimraf ./node_modules package-lock.yaml ./dist",
     "prepare": "husky install",
     "release": "release-it --github.release",
     "release:ci": "npm run release -- --ci --npm.skipChecks --no-git.requireCleanWorkingDir",
@@ -17,24 +55,9 @@
     "test": "run-s test:*",
     "test:setup": "node ./.github/scripts/link.mjs",
     "test:lint": "eslint src test",
-    "test:e2e": "wdio run ./test/wdio.conf.ts",
-    "watch": "yarn run build --watch"
+    "test:e2e": "cd test && npx wdio run ./wdio.conf.ts",
+    "watch": "npm run build -- --watch"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/webdriverio-community/wdio-safaridriver-service.git"
-  },
-  "keywords": [
-    "wdio",
-    "safaridriver",
-    "webdriver"
-  ],
-  "author": "Adrien Ruiz Gauder <caritsqa@gmail.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/webdriverio-community/wdio-safaridriver-service/issues"
-  },
-  "homepage": "https://github.com/webdriverio-community/wdio-safaridriver-service#readme",
   "devDependencies": {
     "@types/node": "^18.0.0",
     "@typescript-eslint/eslint-plugin": "^5.30.0",
@@ -49,7 +72,6 @@
     "eslint-config-airbnb-base-typescript": "^1.1.0",
     "eslint-import-resolver-typescript": "^3.1.1",
     "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-jest": "^26.5.3",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-wdio": "^7.19.4",
@@ -60,18 +82,24 @@
     "ts-node": "^10.8.1",
     "typescript": "^4.7.4"
   },
-  "contributors": [
-    "Adrien Ruiz Gauder <caritsqa@gmail.com>",
-    "Rafal Skorka",
-    "Mattias Ekstrand <mattias.ekstrand@gmail.com>",
-    "Christian Bromann <christian@saucelabs.com>"
-  ],
   "dependencies": {
     "@types/split2": "^3.2.1",
     "@types/tcp-port-used": "^1.0.1",
-    "@wdio/logger": "^7.19.0",
+    "@wdio/logger": "^8.0.0-alpha.219",
     "fs-extra": "^10.1.0",
     "split2": "^4.1.0",
     "tcp-port-used": "^1.0.2"
+  },
+  "peerDependencies": {
+    "@wdio/types": "^7.0.0 || ^8.0.0-alpha.219",
+    "webdriverio": "^7.0.0 || ^8.0.0-alpha.219"
+  },
+  "peerDependenciesMeta": {
+    "@wdio/types": {
+      "optional": true
+    },
+    "webdriverio": {
+      "optional": false
+    }
   }
 }

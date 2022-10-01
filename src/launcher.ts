@@ -7,6 +7,7 @@ import { SevereServiceError } from 'webdriverio'
 import type { Options } from '@wdio/types'
 
 import { getFilePath } from './utils'
+import { pkg } from './constants.js'
 import type { ServiceOptions } from './types'
 
 const POLL_INTERVAL = 100
@@ -17,14 +18,15 @@ const log = logger('wdio-safaridriver-service')
 
 export default class SafariDriverLauncher {
     private _process?: ChildProcess
-    private _outputDir?: string
+    private _outputDir: string
 
     constructor (
         private _options: ServiceOptions,
         _: never,
         private _config: Options.Testrunner
     ) {
-        this._outputDir = this._options.outputDir || this._config.outputDir
+        log.info(`Initiate Safaridriver Service (v${pkg.version})`)
+        this._outputDir = this._options.outputDir || this._config.outputDir || process.cwd()
     }
 
     public async onPrepare () {
@@ -63,7 +65,7 @@ export default class SafariDriverLauncher {
     }
 
     private async _redirectLogStream () {
-        const logFile = getFilePath(this._outputDir!, this._options.logFileName)
+        const logFile = getFilePath(this._outputDir, this._options.logFileName)
         await fs.ensureFile(logFile)
 
         const logStream = fs.createWriteStream(logFile, { flags: 'w' })

@@ -18,11 +18,11 @@ jobs:
         with:
           node-version: 16
       - name: Install Dependencies
-        run: yarn install --frozen-lockfile
+        run: npm ci
       - name: Build
-        run: yarn build
+        run: npm run build
       - name: 🧪 Run Tests
         uses: GabrielBB/xvfb-action@v1
         with:
-          run: yarn test
+          run: npm test
 

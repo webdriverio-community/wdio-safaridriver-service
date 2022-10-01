@@ -18,7 +18,7 @@
   "rules": {
     "max-len": [2, 120],
     "max-classes-per-file": 0,
-    "no-unused-vars": "off",
+    "no-unused-vars": "error",
     "no-underscore-dangle": 0,
     "no-multi-assign": 0,
     "no-restricted-syntax": 0,
@@ -29,6 +29,7 @@
     "func-names": 0,
     "import/export": 0,
     "import/no-cycle": 0,
+    "import/no-unresolved": 0,
     "class-methods-use-this": 0,
     "import/prefer-default-export": "off",
     "node/no-missing-import": "off", // duped by import
@@ -54,7 +55,7 @@
   "parserOptions": {
     "ecmaVersion": 2020,
     "sourceType": "module",
-    "project": ["./tsconfig.json", "./test/tsconfig.json", "./example/tsconfig.json"]
+    "project": ["./tsconfig.json", "./test/tsconfig.json"]
   },
   "settings": {
     "node": {

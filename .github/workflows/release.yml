@@ -41,9 +41,9 @@ jobs:
           git config --global user.email "bot@webdriver.io"
           git config --global user.name "WebdriverIO Release Bot"
       - name: Install Dependencies
-        run: yarn install --frozen-lockfile
+        run: npm ci
       - name: Build
-        run: yarn build
+        run: npm run build
       - name: Release
         run: npm run release:ci -- ${{github.event.inputs.releaseType}}
         env:

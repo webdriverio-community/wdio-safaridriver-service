@@ -1,4 +1,4 @@
-import path from 'path'
+import path from 'node:path'
 
 const FILE_EXTENSION_REGEX = /\.[0-9a-z]+$/i
 const DEFAULT_LOG_FILENAME = 'wdio-safaridriver.log'
