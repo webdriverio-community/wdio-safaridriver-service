@@ -1,5 +1,9 @@
 import path from 'node:path'
+import url from 'node:url'
 import type { Options } from '@wdio/types'
+
+// eslint-disable-next-line @typescript-eslint/naming-convention
+const __dirname = url.fileURLToPath(new URL('.', import.meta.url))
 
 export const config: Options.Testrunner = {
     //
@@ -26,7 +30,7 @@ export const config: Options.Testrunner = {
         // for all available options
         tsNodeOpts: {
             transpileOnly: true,
-            project: path.join(__dirname, '/tsconfig.json')
+            project: path.join(__dirname, '..', 'tsconfig.json')
         }
         // tsconfig-paths is only used if "tsConfigPathsOpts" are provided, if you
         // do please make sure "tsconfig-paths" is installed as dependency

@@ -1,9 +1,10 @@
 import fs from 'fs-extra'
-import { spawn, ChildProcess } from 'child_process'
 import split2 from 'split2'
 import logger from '@wdio/logger'
 import tcpPortUsed from 'tcp-port-used'
+import safaridriver, { DEFAULT_PORT } from 'safaridriver'
 import { SevereServiceError } from 'webdriverio'
+import type { ChildProcess } from 'child_process'
 import type { Options } from '@wdio/types'
 
 import { getFilePath } from './utils.js'
@@ -12,7 +13,6 @@ import type { ServiceOptions } from './types'
 
 const POLL_INTERVAL = 100
 const POLL_TIMEOUT = 10000
-const DEFAULT_PORT = 4444
 
 const log = logger('wdio-safaridriver-service')
 
@@ -30,15 +30,9 @@ export default class SafariDriverLauncher {
     }
 
     public async onPrepare () {
-        const args = this._options.args || []
-        const port = this._options.port || this._config.port || DEFAULT_PORT
-
-        if (!args.find((arg) => arg.startsWith('-p'))) {
-            args.push(`-p ${port}`)
-        }
-
-        log.info(`Start Safaridriver with args ${args.join(' ')}`)
-        this._process = spawn('safaridriver', args)
+        const port = this._options.port || DEFAULT_PORT
+        log.info(`Start Safaridriver on port ${port}`)
+        this._process = safaridriver.start(this._options)
 
         if (typeof this._outputDir === 'string') {
             await this._redirectLogStream()

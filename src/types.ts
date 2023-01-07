@@ -1,4 +1,6 @@
-export interface ServiceOptions {
+import type { SafaridriverOptions } from 'safaridriver'
+
+export interface ServiceOptions extends SafaridriverOptions {
     /**
      * The port on which the driver should run on.
      */
