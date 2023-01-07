@@ -11,4 +11,4 @@ const LINKED_DIR = path.join(ROOT, 'node_modules', 'wdio-safaridriver-service')
 await fs.rm(LINKED_DIR, {
     recursive: true
 }).catch((e) => console.warn(`Linked dir doesn't exists: ${e.message}`))
-await fs.symlink('../', LINKED_DIR)
+await fs.symlink(ROOT, LINKED_DIR)

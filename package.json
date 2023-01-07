@@ -55,7 +55,7 @@
     "test": "run-s test:*",
     "test:setup": "node ./.github/scripts/link.mjs",
     "test:lint": "eslint src test",
-    "test:e2e": "cd test && npx wdio run ./wdio.conf.ts",
+    "test:e2e": "npx wdio run ./test/wdio.conf.ts",
     "watch": "npm run build -- --watch"
   },
   "devDependencies": {
