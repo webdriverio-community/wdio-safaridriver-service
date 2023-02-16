@@ -2,7 +2,6 @@
   "compilerOptions": {
     "module": "ESNext",
     "target": "ES2020",
-    "baseUrl": "src",
     "outDir": "./dist",
     "moduleResolution": "node",
     "declaration": true,
@@ -25,6 +24,6 @@
       "expect-webdriverio"
     ]
   },
-  "include": ["src/**/*", "src/cjs/package.json", "test/**/*"],
-  "ignore": ["node_modules", "dist"]
+  "include": ["src/**/*", "src/cjs/package.json"],
+  "ignore": ["node_modules", "dist", "test"]
 }

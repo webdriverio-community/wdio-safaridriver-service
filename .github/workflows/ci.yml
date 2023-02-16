@@ -26,8 +26,5 @@ jobs:
         with:
           run: |
             ln -s ../ ./node_modules/wdio-safaridriver-service
-            ls -la ./
-            ls -la ./node_modules
-            ls -la ./node_modules/wdio-safaridriver-service
             npm test
 
