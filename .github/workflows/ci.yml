@@ -24,5 +24,8 @@ jobs:
       - name: 🧪 Run Tests
         uses: GabrielBB/xvfb-action@v1
         with:
-          run: npm test
+          run: |
+            ls -la ./node_modules
+            ls -la ./
+            npm test
 
