@@ -54,7 +54,7 @@
     "release:major": "npm run release -- major",
     "test": "run-s test:*",
     "test:setup": "node ./.github/scripts/link.mjs",
-    "test:lint": "eslint src test",
+    "test:lint": "eslint",
     "test:e2e": "npx wdio run ./test/wdio.conf.ts",
     "watch": "npm run build -- --watch"
   },
