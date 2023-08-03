@@ -1,3 +1,5 @@
+⚠️ __DEPRECATION WARNING:__ This service got deprecated and is no longer needed if you use WebdriverIO v8.14 or hight. We recommend to remove the service as dependency and from your WebdriverIO configuration.
+
 # WDIO SafariDriver Service [![CI](https://github.com/webdriverio-community/wdio-safaridriver-service/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/webdriverio-community/wdio-safaridriver-service/actions/workflows/ci.yml)
 
 This service helps you to run the Safari browser seamlessly when running tests with the [WDIO testrunner](http://webdriver.io/guide/testrunner/gettingstarted.html). It uses the [`/usr/bin/safaridriver`](https://developer.apple.com/documentation/webkit/testing_with_webdriver_in_safari) that comes with Safari/OSX.
