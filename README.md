@@ -1,4 +1,4 @@
-⚠️ __DEPRECATION WARNING:__ This service got deprecated and is no longer needed if you use WebdriverIO v8.14 or hight. We recommend to remove the service as dependency and from your WebdriverIO configuration.
+⚠️ __DEPRECATION WARNING:__ This service got deprecated and is no longer maintained. If you use WebdriverIO __v8.14__ or higher. We recommend to remove the service as dependency and from your WebdriverIO configuration as it is no longer needed. For more information, please read [this blog post](https://webdriver.io/blog/2023/07/31/driver-management).
 
 # WDIO SafariDriver Service [![CI](https://github.com/webdriverio-community/wdio-safaridriver-service/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/webdriverio-community/wdio-safaridriver-service/actions/workflows/ci.yml)
 
